@@ -1,4 +1,4 @@
-var arrayLength = 20;
+var arrayLength = 1000;
 var heightArray = [];
 var createdDivHeights = [];
 var hv = document.getElementsByClassName('heightValueClass');
@@ -21,7 +21,7 @@ for (var j = 0; j < hv.length; j++) {
   createdDivHeights.push(parseInt(hv[j].style.height));
 }
 
-function BubbleSort() {
+var BubbleSort = function () {
   this.bubbleArray = createdDivHeights;
   this.count = 0;
   this.sorter = function() {
@@ -33,25 +33,20 @@ function BubbleSort() {
         i = -1;
         count++;
       }
-
     }
-    return bubbleArray;
+    var k = 0;
+    return function() {
+      while (k < arrayLength) {
+        hv[k].style.height = '' + bubbleArray[k] + 'px';
+        return k++;
+      }
+      clearInterval(start);
+    };
   };
   return {
-    bubbleArray : this.bubbleArray,
-    sorter      : this.sorter,
-    stepper     : function() {
-      for (var j = 0; j > bubbleArray.length; j++) {
-        hv[j].style.height = '' + createdDivHeights[j] + 'px';
-      }
-    }
-  };
-}
-var runThru = BubbleSort().sorter();
+      sorter : this.sorter
+    };
+};
 
-setInterval(BubbleSort().stepper(), 500);
-
-// for (k = 0; k < createdDivHeights.length; k++) {
-//   setInterval(sort, [k] * 10000);
-// }
+var start = setInterval(BubbleSort().sorter(), 10);
 
