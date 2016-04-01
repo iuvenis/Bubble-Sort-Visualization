@@ -76,6 +76,12 @@ p {
   background-color: white;
   margin-top: 10%; }
 
+#clear {
+  background-color: transparent;
+  display: float;
+  min-height: 600px;
+  z-index: 99; }
+
 .row {
   height: 600px;
   background-color: RGBA(49, 67, 76, 1);
@@ -86,7 +92,14 @@ p {
 
 .heightValueClass {
   flex: 1 1 auto;
-  background-color: RGBA(83, 210, 152, 1); }
+  background-color: RGBA(25, 227, 177, 0.95);
+  order: 2; }
+
+.heightMerge {
+  flex: 1 1 auto;
+  background-color: RGBA(0, 204, 204, 0.95);
+  order: 1;
+  z-index: 2; }
 
 h1 {
   color: white; }

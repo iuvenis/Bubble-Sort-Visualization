@@ -1,4 +1,4 @@
-var arrayLength = 200;
+var arrayLength = 25;
 var heightArray = [];
 var createdDivHeights = [];
 var hv = document.getElementsByClassName('heightValueClass');
@@ -35,10 +35,11 @@ function sorter() {
         hv[k].style.height = '' + createdDivHeights[k] + 'px';
         return k++;
       }
-      while (k >= 10) {
+      while (k >= arrayLength) {
         k = 0;
         return sorter();
       }
+      clearInterval(start);
     };
 }
 

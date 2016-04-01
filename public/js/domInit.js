@@ -3,6 +3,8 @@ var heightArray = [];
 var createdDivHeights = [];
 var hv = document.getElementsByClassName('heightValueClass');
 
+
+//Divs for Animation
 (function boxMaker() {
   for (var i = 0; i < arrayLength; i++) {
     var row = document.createElement('div');
@@ -21,6 +23,7 @@ for (var j = 0; j < hv.length; j++) {
   createdDivHeights.push(parseInt(hv[j].style.height));
 }
 
+//Bubble Sort Function
 var BubbleSort = function () {
   this.bubbleArray = createdDivHeights;
   this.count = 0;
@@ -34,6 +37,7 @@ var BubbleSort = function () {
         count++;
       }
     }
+    //Animation through Recursion
     var k = 0;
     return function() {
       while (k < arrayLength) {
