@@ -1,4 +1,4 @@
-var arrayLength = 25;
+var arrayLength = 100;
 var heightArray = [];
 var createdDivHeights = [];
 var hv = document.getElementsByClassName('heightValueClass');

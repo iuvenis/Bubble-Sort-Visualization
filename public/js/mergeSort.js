@@ -1,4 +1,4 @@
-var arrayLength = 25;
+var arrayLength = 10;
 var heightArray = [];
 var createdDivHeightsMerge = [];
 var hm = document.getElementsByClassName('heightMerge');
@@ -22,35 +22,44 @@ for (var j = 0; j < hm.length; j++) {
 }
 
 function mergeSort (arr) {
-  if (createdDivHeightsMerge.length < 2) return createdDivHeightsMerge;
-  var pivot = Math.floor(createdDivHeightsMerge.length / 2);
-  var left = createdDivHeightsMerge.slice(0, pivot);
-  var right = createdDivHeightsMerge.slice(pivot);
-  merge(left, right);
+  if (arr.length < 2) return arr;
+  var pivot = Math.floor(arr.length / 2);
+  var left = arr.slice(0, pivot);
+  var right = arr.slice(pivot);
+  return merge(mergeSort(left), mergeSort(right));
 }
-
+var k = 0;
 function merge (left,right) {
+  debugger;
   var result = [];
-  while (left.length > 0 && right.length > 0)
-    for (i = 0; i < createdDivHeightsMerge; i++) {
-      result.push(left[i] < right[i]);
-      console.log('in LEFT RIGHT');
-      result.concat(left, right);
+  while (left.length > 0 && right.length > 0) {
+    if (left[0] < right[0]) {
+      result.push(left[0]);
+      left.splice(0, 1);
+    } else {
+      result.push(right[0]);
+      right.splice(0, 1);
     }
-  console.log(result);
-  return function() {
-      var k = 0;
-      console.log('in K');
-      while (k < arrayLength) {
-        hv[k].style.height = '' + createdDivHeights[k] + 'px';
-        return k++;
-      }
-      console.log(k);
-      while (k >= arrayLength) {
-        k = 0;
-        return mergeSort();
-      }
-      console.log('HERE');
-    };
+  }
+  if (left.length > 0) {
+    left.forEach(function(num) {
+      result.push(num);
+    });
+  }
+  if (right.length > 0) {
+    right.forEach(function(num) {
+      result.push(num);
+    });
+  }
+    while (k < left || k < right) {
+    hm[k].style.height = '' + createdDivHeights[k] + 'px';
+    return k++;
+  }
+  console.log(k);
+  while (k >= left || k >= right) {
+    k = 0;
+    return merge();
+  }
+  return result;
 }
 mergeSort(createdDivHeightsMerge);
