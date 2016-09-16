@@ -1,4 +1,4 @@
-var arrayLength = 100;
+var arrayLength = 200;
 var heightArray = [];
 var createdDivHeights = [];
 var hv = document.getElementsByClassName('heightValueClass');
@@ -43,4 +43,4 @@ function sorter() {
     };
 }
 
-var start = setInterval(sorter(arrayLength), 1);
+var start = setInterval(sorter(arrayLength), .01);
